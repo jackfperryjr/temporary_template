@@ -13,8 +13,16 @@ jobs:
       run: |
         touch README.md
         echo temporary_template repo workflow commit 1 >> README.md
-    - name: Commit and Check-In
+    - name: Commit and Check-In README
       run: |
+        git config --global user.email "test_workflow@test.com"
+        git config --global user.name "Test"
+        git add -A
+        git commit -m "Workflow README.md commit"
+        git push
+    - name: Remove Workflow and Commit Changes
+      run: |
+        rm -rf .github
         git config --global user.email "test_workflow@test.com"
         git config --global user.name "Test"
         git add -A
